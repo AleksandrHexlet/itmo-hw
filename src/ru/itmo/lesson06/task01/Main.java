@@ -6,46 +6,34 @@ public class Main {
         Groups groups02 = new Groups();
         Groups groups03 = new Groups();
 
-        Mountain mountain01 = new Mountain();
-        Mountain mountain02 = new Mountain();
-        Mountain mountain03 = new Mountain();
+        Mountain mountain01 = new Mountain("Эльбрус","Россия",4567);
+        Mountain mountain02 = new Mountain("Фудзияма", "Япония", 3456 );
+        Mountain mountain03 = new Mountain("Эверест", "Бутан",2345);
 
-        Climber climber01 = new Climber();
-        Climber climber02 = new Climber();
-        Climber climber03 = new Climber();
+        Climber climber01 = new Climber("Иван","Россия, Новосибирск");
+        Climber climber02 = new Climber("Степан","Россия, Калиниград");
+        Climber climber03 = new Climber("Павел","Россия,Владивосток");
+        Climber climber04 = new Climber("Даниил","Россия, Москва");
+        Climber climber05 = new Climber("Захар","Россия, Санкт-Петербург");
 
-        climber01.setAddress("Moscow, Neglinnaya");
-        climber02.setAddress("Moscow, Arbat");
-        climber03.setAddress("Moscow, Tverskaya");
 
-        climber01.setName("Igor");
-        climber02.setName("Ivan");
-        climber03.setName("Petr");
-
-        mountain01.setCountry("Russia");
-        mountain02.setCountry("Nepal");
-        mountain03.setCountry("Espana");
-
-        mountain01.setName("Elbrus");
-        mountain02.setName("Nepal_mount");
-        mountain03.setName("Espana_mount");
 
         groups01.setMountain(mountain01);
         groups02.setMountain(mountain02);
         groups03.setMountain(mountain03);
 
 
-        groups01.addClimber(climber01,1);
-        groups01.addClimber(climber02,2);
-        groups01.addClimber(climber03,3);
+        groups01.addClimber(climber04);
+        groups01.addClimber(climber02);
+        groups01.addClimber(climber03);
         groups01.setOpen(false);
 
-        groups02.addClimber(climber01,1);
-        groups02.addClimber(climber02,2);
+        groups02.addClimber(climber05);
+        groups02.addClimber(climber03);
         groups02.setOpen(true);
 
-        groups03.addClimber(climber01,1);
-        groups03.addClimber(climber02,2);
+        groups03.addClimber(climber01);
+        groups03.addClimber(climber05);
         groups03.setOpen(true);
 
         System.out.println("groups03 : " + groups03.toString());

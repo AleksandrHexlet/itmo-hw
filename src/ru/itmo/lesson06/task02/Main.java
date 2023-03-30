@@ -10,11 +10,11 @@ public class Main {
 
 
         AllowedProducts allowedProducts = new AllowedProducts();
-        allowedProducts.addProduct(product02, 0);
-        allowedProducts.addProduct(product03, 1);
-        allowedProducts.addProduct(product04, 2);
+        allowedProducts.addProduct(product02);
+        allowedProducts.addProduct(product03);
+        allowedProducts.addProduct(product04);
         System.out.println("Разрешенные продукты : " + allowedProducts.toString());
-        allowedProducts.addProduct(product01,3);
+        allowedProducts.addProduct(product01);
 
 
 //        allowedProducts.addProduct(product01, 1);

@@ -1,15 +1,20 @@
 package ru.itmo.lesson06.task01;
 
 public class Climber {
-    private String name = "Ivan";
-    private String address = "Moscow";
+    private final String name;
+    private final String address;
 
-    public void setName(String name) {
-        if(name.length() > 2) this.name = name;
+    public Climber(String name, String address) {
+        this.name = name;
+        this.address = address;
     }
 
-    public void setAddress(String address) {
-        if(address.length() > 4) this.address = address;
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     @Override
