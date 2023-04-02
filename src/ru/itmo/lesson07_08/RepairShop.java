@@ -1,10 +1,9 @@
 package ru.itmo.lesson07_08;
 
-import ru.itmo.lesson07_08.interfaces.ColorChangeAble;
+
 import ru.itmo.lesson07_08.interfaces.ITransport;
-import ru.itmo.lesson07_08.transport.Bus;
 import ru.itmo.lesson07_08.transport.Car;
-import ru.itmo.lesson07_08.transport.Train;
+
 
 import java.util.Arrays;
 
@@ -28,24 +27,15 @@ public class RepairShop {
 
     public void transportRepair() {
         for (int i = 0; i < vehiclesArr.length; i++) {
-
-            if (vehiclesArr[i] instanceof Train) {
-                vehiclesArr[i].transportRepair(55);
-                System.out.println("Train is repeir : " + vehiclesArr[i]);
-            } else if (vehiclesArr[i]  instanceof Bus) {
-                vehiclesArr[i].transportRepair(65);
-                System.out.println("Bus is repeir : " + vehiclesArr[i]);
-            } else if (vehiclesArr[i]  instanceof Car) {
-                vehiclesArr[i].transportRepair(75);
+            int repair = (int) (Math.random() * 99);
+            if (vehiclesArr[i]  != null) vehiclesArr[i].transportRepair(repair);
+            if (vehiclesArr[i]  instanceof Car) {
                 ((Car) vehiclesArr[i] ).setColor(colorArr[(int) (Math.random() * 7)]);
-                System.out.println("Car is repeir : " + vehiclesArr[i]);
-            } else if (vehiclesArr[i]  instanceof ColorChangeAble) {
-                ((ColorChangeAble) vehiclesArr[i]).setColor(colorArr[(int) (Math.random() * 7)]);
-                System.out.println("type ColorChangeAble is repeir : " + vehiclesArr[i]);
             }
             vehiclesArr[i] = null;
         }
         System.out.println("Все машины прошли ремонт. Парк состоит из: " +Arrays.toString(vehiclesArr));
+
     }
 
     @Override

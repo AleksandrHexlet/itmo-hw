@@ -1,16 +1,16 @@
 package ru.itmo.lesson07_08.transport;
 
+import ru.itmo.lesson07_08.interfaces.ColorChangeAble;
 import ru.itmo.lesson07_08.interfaces.ITransport;
 
-public class Car implements ITransport {
+public class Car  extends  Transport implements ITransport, ColorChangeAble {
 
-    private int iznosLevel;
-    private final int transportNumber;
+//    3. классу Car нужно добавить интерфейс ColorChangeAble
+//    и вызывать метод setColor, если объект относится к данному типу. Отдельно у машины не нужно вызывать setColor
     private String color;
 
     public Car(int iznosLevel, int transportNumber, String color) {
-        this.iznosLevel = iznosLevel;
-        this.transportNumber = transportNumber;
+        super(iznosLevel, transportNumber);
         this.color = color;
     }
 
@@ -24,9 +24,9 @@ public class Car implements ITransport {
         }
     }
 
+    @Override
     public void setColor(String color) {
-
-       if(color.length() > 0) this.color = color;
+        if(color.length() > 0) this.color = color;
     }
 
     @Override
@@ -37,6 +37,8 @@ public class Car implements ITransport {
                 ", color='" + color + '\'' +
                 '}';
     }
+
+
 }
 
 

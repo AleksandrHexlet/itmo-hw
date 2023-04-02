@@ -2,17 +2,14 @@ package ru.itmo.lesson07_08.transport;
 
 import ru.itmo.lesson07_08.interfaces.ITransport;
 
-public class Bus implements ITransport {
+public class Bus extends Transport implements ITransport {
 
-    private int iznosLevel;
-    private final int transportNumber;
     private final String color;
 
     private boolean isWiFi;
 
     public Bus(int iznosLevel, int transportNumber, String color,  boolean isWiFi) {
-        this.iznosLevel = iznosLevel;
-        this.transportNumber = transportNumber;
+        super(iznosLevel, transportNumber);
         this.color = color;
         this.isWiFi = isWiFi;
     }

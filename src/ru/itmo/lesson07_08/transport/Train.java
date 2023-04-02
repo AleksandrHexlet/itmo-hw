@@ -2,9 +2,9 @@ package ru.itmo.lesson07_08.transport;
 
 import ru.itmo.lesson07_08.interfaces.ITransport;
 
-public class Train implements ITransport {
-    private int iznosLevel;
-    private final int transportNumber;
+public class Train extends  Transport implements ITransport {
+//    private int iznosLevel;
+//    private final int transportNumber;
     private String color = "Green";
     private int countWagons;
 
@@ -14,8 +14,9 @@ public class Train implements ITransport {
     }
 
     public Train(int iznosLevel, int transportNumber, int countWagons) {
+        super(iznosLevel, transportNumber);
         this.iznosLevel = iznosLevel;
-        this.transportNumber = transportNumber;
+
         this.countWagons = countWagons;
     }
 
