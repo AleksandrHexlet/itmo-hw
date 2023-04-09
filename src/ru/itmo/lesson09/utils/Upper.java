@@ -1,14 +1,14 @@
 package ru.itmo.lesson09.utils;
 
 import ru.itmo.lesson09.AppFileWriter;
-import ru.itmo.lesson09.interfaces.СommonInterface;
+import ru.itmo.lesson09.interfaces.CommonInterface;
 
-public class Upper extends ParentUtils implements СommonInterface {
-
-
+public class Upper extends ParentUtils implements CommonInterface {
 
 
-    public Upper(СommonInterface сommonInterfaceOUT) {
+
+
+    public Upper(CommonInterface сommonInterfaceOUT) {
         super(сommonInterfaceOUT);
     }
 

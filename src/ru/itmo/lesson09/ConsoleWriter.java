@@ -1,8 +1,9 @@
 package ru.itmo.lesson09;
 
-import ru.itmo.lesson09.interfaces.СommonInterface;
+import ru.itmo.lesson09.interfaces.CommonInterface;
 
-public class ConsoleWriter implements СommonInterface {
+
+public class ConsoleWriter implements CommonInterface {
 
 
     @Override

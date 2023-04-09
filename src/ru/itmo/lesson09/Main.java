@@ -1,16 +1,16 @@
 package ru.itmo.lesson09;
 
-import ru.itmo.lesson09.interfaces.СommonInterface;
+import ru.itmo.lesson09.interfaces.CommonInterface;
 import ru.itmo.lesson09.utils.Delimiter;
 import ru.itmo.lesson09.utils.ParentUtils;
 import ru.itmo.lesson09.utils.Upper;
 
 public class Main {
     public static void main(String[] args) {
-        СommonInterface logger01 = new Delimiter(new Upper(new ConsoleWriter()));
+        CommonInterface logger01 = new Delimiter(new Upper(new ConsoleWriter()));
         logger01.log("сообщение from Delimiter");
 
-        СommonInterface logger02 = new Upper(new Delimiter(new AppFileWriter()));
+        CommonInterface logger02 = new Upper(new Delimiter(new AppFileWriter()));
         logger02.log("сообщение from Upper");
     }
 }

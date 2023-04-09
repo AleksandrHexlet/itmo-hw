@@ -2,13 +2,13 @@ package ru.itmo.lesson09.utils;
 
 import ru.itmo.lesson09.AppFileWriter;
 import ru.itmo.lesson09.ConsoleWriter;
-import ru.itmo.lesson09.interfaces.СommonInterface;
+import ru.itmo.lesson09.interfaces.CommonInterface;
 
-public class Delimiter extends ParentUtils implements СommonInterface {
+public class Delimiter extends ParentUtils implements CommonInterface {
 
 
 
-    public Delimiter(СommonInterface сommonInterfaceOUT) {
+    public Delimiter(CommonInterface сommonInterfaceOUT) {
         super(сommonInterfaceOUT);
     }
 

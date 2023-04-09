@@ -1,6 +1,6 @@
 package ru.itmo.lesson09.interfaces;
 
-public interface СommonInterface {
+public interface CommonInterface {
 
     public void log(String str);
 }
