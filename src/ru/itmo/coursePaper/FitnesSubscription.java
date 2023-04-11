@@ -92,29 +92,6 @@ public class FitnesSubscription {
         return owner;
     }
 
-    public void somecode(){
-
-//        FitnesSubscription fitnessSubscription = new FitnesSubscription(SubscriptionType.FULL_SUBSCRIPTION);
-//        fitnessSubscription.getTime();
-//
-//        LocalTime time = LocalTime.now();
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-//        LocalTime lt1 = LocalTime.of( 22 , 17 ) ;
-//        LocalTime lt2 = LocalTime.of( 21 , 29 ) ;
-//
-//        boolean isBefore = time.isBefore( lt1 ) ;
-//        boolean isBefore1 = lt1.isBefore( time ) ;
-//        System.out.println("isBefore1 =  " + isBefore1);
-//        System.out.println("isBefore =  " + isBefore);
-//
-//        System.out.println("time = " +time.format(formatter));
-//        String name_subs =  fitnessSubscription.getOne_time_subscription().getName_subscription();
-//        System.out.println("name subscription = "+ name_subs);
-//        System.out.println("getEnd_time() subscription = "+ fitnessSubscription.getOne_time_subscription().getEnd_time());
-//        System.out.println("getTime_start() subscription = "+ fitnessSubscription.getOne_time_subscription().getTime_start());
-//        System.out.println("local time = "+   formatter   +("HH:mm:ss");
-
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -142,15 +119,3 @@ public class FitnesSubscription {
 }
 
 
-/*
-В фитнес клубе есть три типа абонементов:
-
-Разовый (на один день). По разовому абонементу клиенты могут посещать бассейн и
-тренажерный зал с 8 до 22 часов.
-Дневной (срок действия может быть любым). По данному абонементу клиенты могут посещать
-тренажерный зал и групповые занятия (но не бассейн) с 8 до 16 часов.
-Полный (срок действия может быть любым). По данному абонементу клиенты могут посещать
-тренажерный зал, бассейн и групповые занятия с 8 до 22 часов.
-Каждый абонемент хранит номер, дату регистрации (текущая дата) и дату окончания регистрации.
-Каждый абонемент хранит информацию о владельце (НЕ НАОБОРОТ). Данные о владельце: имя, фамилия, год рождения.
- */
