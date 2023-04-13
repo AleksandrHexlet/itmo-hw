@@ -1,66 +1,75 @@
 package ru.itmo.lesson13;
 
-import java.io.FileNotFoundException;
-import java.nio.file.AccessDeniedException;
-import java.util.jar.JarException;
-
 public class Main {
     public static void main(String[] args) {
 
-        try {
-            ExceptionClass.throwException(Status.FILE_NOT_FOUND);
-        }catch (JarException |FileNotFoundException exception){
-            exception.printStackTrace();
-        }catch (AccessDeniedException exception){
-            System.out.println(exception.getMessage());
-            throw new RuntimeException();
-        }
 
-        try {
-            ExceptionClass.throwException(Status.JAR_ERROR);
-        }catch (JarException |FileNotFoundException exception){
-            exception.printStackTrace();
-        } catch (AccessDeniedException exception){
-            System.out.println(exception.getMessage());
-            throw new RuntimeException();
-        }
 
-        try {
+    User<Number> user02= new User<>();
+    User<String> user03= new User<>();
+    PairContainer <Number, String> pairContainer01= new PairContainer<>(12, "Moscow and Saint-Petersburg");
+    PairContainer <String,User<Number>> pairContainer02= new PairContainer<>("Ivan",user02);
 
-            ExceptionClass.throwException(Status.ACCESS_DENIED);
-        }catch (JarException |FileNotFoundException exception){
-            exception.printStackTrace();
-        }catch (AccessDeniedException exception){
-            System.out.println(exception.getMessage());
-            throw new RuntimeException();
-        }
+    PairContainer <Number,User<String>> pairContainer03= new PairContainer<>(19,user03);
+    PairContainer <String, PairContainer<Number,User<String>>> pairContainer04= new PairContainer<>("Igor",pairContainer03);
+
+
+        System.out.println("result = " +  pairContainer01.getKey() );
+
+        System.out.println("pairContainer01.getKey() = " + pairContainer01.getKey() + "; getValue() = " + pairContainer01.getValue());
 
 
 
+    //    Объявить класс PairContainer со свойствами key и value. key и value - generic свойства без
+//    ограничений, но могут быть разных типов.
+//    Создать экземпляр PairContainer, где key - любые числа, value - строка
+//    Создать экземпляр PairContainer, где key - строка, value - тип User, у которого id - любые числа
+//    Создать экземпляр PairContainer, где key - строка, value - тип PairContainer, у которого key -
+//    любые числа, value - тип User, у которого id - строка
 
-        /*
-        При вызове метода throwException обработать исключения следующим образом:
-
-FileNotFoundException - выводить в консоль стек трейс,
-AccessDeniedException* - выводить в консоль сообщение исключения (метод getMessage()) и выбрасывать исключение времени выполнения,
-JarException - выводить в консоль стек трейс.
-enum с необходимыми константами нужно создать.
-         */
-
-
-    }
 }
-/*
-Задание на исключения
-Объявить метод static void throwException(Status status) throws JarException, FileNotFoundException, AccessDeniedException, который принимает на вход enum и выбрасывает следующие исключения в зависимости от значения status:
+}
 
-если status FILE_NOT_FOUND, выбрасывает FileNotFoundException
-если status ACCESS_DENIED, выбрасывает AccessDeniedException
-если status JAR_ERROR, выбрасывает JarException.
-При вызове метода throwException обработать исключения следующим образом:
 
-FileNotFoundException - выводить в консоль стек трейс,
-AccessDeniedException* - выводить в консоль сообщение исключения (метод getMessage()) и выбрасывать исключение времени выполнения,
-JarException - выводить в консоль стек трейс.
-enum с необходимыми константами нужно создать.
- */
+
+//jjj
+// interface Eatable extends Serializable{}
+//  interface Runnable {}
+//
+//  class Animal implements Runnable{}
+//
+//  class Cat extends Animal implements Eatable{}
+//  class Kitten extends Cat{}
+//
+//  class Dog extends Animal implements Serializable{}
+//
+//
+//  class Task {
+//     public static  <T extends Cat & Eatable> void void01(T object){
+//         // ВОПРОС: методы каких типов можно вызвать у object ???
+//          Ответ : только  Kitten
+//     }
+//
+//     public static  <T extends Animal & Serializable> void void02(T object){
+//        // ВОПРОС: методы каких типов можно вызвать у object ???
+//          Ответ : только  методы Dog
+//     }
+//
+//     public static  <T extends Serializable & Runnable> void void03(T object){
+//        // ВОПРОС: методы каких типов можно вызвать у object ???
+//             Ответ :  методы CAT  Kitten Dog
+//     }
+//
+//     public static void main(String[] args) {
+//        Task.</* ВОПРОС: какие типы можно указать ??? */>void01(/* ВОПРОС: какие типы можно передать ??? */);
+//        Ответ : только  Kitten
+//
+//
+//
+//        Task.</* ВОПРОС: какие типы можно указать ??? */>void02(/* ВОПРОС: какие типы можно передать ??? */);
+//         Ответ : только  методы Dog
+//
+//        Task.<Dog>void03(/* ВОПРОС: какие типы можно передать ??? */);
+//         Ответ :  методы CAT  Kitten Dog
+//
+//        }
