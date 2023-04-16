@@ -1,7 +1,6 @@
 package ru.itmo.coursePaper;
 
-import ru.itmo.coursePaper.Utils.ENUM.AddClientToArr;
-import ru.itmo.coursePaper.Utils.ENUM.FitnesZone;
+
 import ru.itmo.coursePaper.Utils.ENUM.SubscriptionType;
 
 import java.time.LocalTime;
@@ -17,10 +16,10 @@ public class FitnesCenter {
     private int countGYM = 0;
     private int countPOOL = 0;
     private int countGroupClasses = 0;
-    private LocalTime currentTime = LocalTime.now();
+    private final LocalTime currentTime = LocalTime.now();
 
 
-    public void addClient(FitnesSubscription subscription, FitnesZone fitnesZone) {
+    public void addClient(FitnesSubscription subscription, SubscriptionType fitnessZone) {
         if (subscription.getDate_registration().isAfter(subscription.getEnd_date_registration())) {
             throw new IllegalArgumentException("Срок действия вашего абонемента истек. В ближайшее время с вами свяжется наш менеджер");
         }
@@ -31,65 +30,65 @@ public class FitnesCenter {
 
         if (subscription.getSubscriptionType().getName_subscription().equals(SubscriptionType.ONE_TIME_SUBSCRIPTION.getName_subscription())) {
 
-            if (fitnesZone.name().equals(FitnesZone.GYM.name())) {
-                getInfoClientWhoCame(subscription, fitnesZone);
-                this.gym_visitors = AddClientToArr.addClientToGYM(subscription, fitnesZone, countGYM, gym_visitors);
+            if (fitnessZone.name().equals(SubscriptionType.GYM.name())) {
+                getInfoClientWhoCame(subscription, fitnessZone);
+                this.gym_visitors = addClientToGYM(subscription, fitnessZone, gym_visitors);
                 System.out.println("gym_visitors = " + Arrays.toString(gym_visitors));
                 return;
-            } else if (fitnesZone.name().equals(FitnesZone.SWIMMING_POOL.name())) {
-                this.visitors_pool = AddClientToArr.addClientToPOOL(subscription, fitnesZone, countPOOL, visitors_pool);
-                getInfoClientWhoCame(subscription, fitnesZone);
+            } else if (fitnessZone.name().equals(SubscriptionType.SWIMMING_POOL.name())) {
+                this.visitors_pool = addClientToPOOL(subscription, fitnessZone, visitors_pool);
+                getInfoClientWhoCame(subscription, fitnessZone);
                 System.out.println("visitors_pool = " + Arrays.toString(visitors_pool));
                 return;
             } else {
-                System.out.println("ONE_TIME_SUBSCRIPTION Ваш тип абонемента не позволяет посещать " + fitnesZone.name() + ". Обратитесь пожалуйста к вашему менеджеру");
+                System.out.println("ONE_TIME_SUBSCRIPTION Ваш тип абонемента не позволяет посещать " + fitnessZone.name() + ". Обратитесь пожалуйста к вашему менеджеру");
                 return;
             }
         }
 
 
         if (subscription.getSubscriptionType().getName_subscription().equals(SubscriptionType.DAILY_SUBSCRIPTION.getName_subscription())) {
-            if (fitnesZone.name().equals(FitnesZone.GYM.name())) {
+            if (fitnessZone.name().equals(SubscriptionType.GYM.name())) {
 
-                this.gym_visitors = AddClientToArr.addClientToGYM(subscription, fitnesZone, countGYM, gym_visitors);
-                getInfoClientWhoCame(subscription, fitnesZone);
+                this.gym_visitors = addClientToGYM(subscription, fitnessZone, gym_visitors);
+                getInfoClientWhoCame(subscription, fitnessZone);
 
                 System.out.println("gym_visitors = " + Arrays.toString(gym_visitors));
 
                 return;
-            } else if (fitnesZone.name().equals(FitnesZone.GROUP_CLASSES.name())) {
+            } else if (fitnessZone.name().equals(SubscriptionType.GROUP_CLASSES.name())) {
 
-                this.visitors_group_classes = AddClientToArr.addClientToGroupClasses(subscription, fitnesZone, countGroupClasses, visitors_group_classes);
-                getInfoClientWhoCame(subscription, fitnesZone);
+                this.visitors_group_classes = addClientToGroupClasses(subscription, fitnessZone, visitors_group_classes);
+                getInfoClientWhoCame(subscription, fitnessZone);
                 System.out.println("visitors_group_classes = " + Arrays.toString(visitors_group_classes));
 
                 return;
             } else {
-                System.out.println("Ваш тип абонемента DAILY_SUBSCRIPTION  и он не позволяет посещать " + fitnesZone.name() + ". Обратитесь пожалуйста к вашему менеджеру");
+                System.out.println("Ваш тип абонемента DAILY_SUBSCRIPTION  и он не позволяет посещать " + fitnessZone.name() + ". Обратитесь пожалуйста к вашему менеджеру");
                 return;
             }
         }
 
         if (subscription.getSubscriptionType().getName_subscription().equals(SubscriptionType.FULL_SUBSCRIPTION.getName_subscription())) {
-            if (fitnesZone.name().equals(FitnesZone.GYM.name())) {
-                this.gym_visitors = AddClientToArr.addClientToGYM(subscription, fitnesZone, countGYM, gym_visitors);
+            if (fitnessZone.name().equals(SubscriptionType.GYM.name())) {
+                this.gym_visitors = addClientToGYM(subscription, fitnessZone, gym_visitors);
                 System.out.println("gym_visitors = " + Arrays.toString(gym_visitors));
-                getInfoClientWhoCame(subscription, fitnesZone);
+                getInfoClientWhoCame(subscription, fitnessZone);
                 return;
-            } else if (fitnesZone.name().equals(FitnesZone.GROUP_CLASSES.name())) {
-                this.visitors_group_classes = AddClientToArr.addClientToGroupClasses(subscription, fitnesZone, countGroupClasses, visitors_group_classes);
+            } else if (fitnessZone.name().equals(SubscriptionType.GROUP_CLASSES.name())) {
+                this.visitors_group_classes = addClientToGroupClasses(subscription, fitnessZone, visitors_group_classes);
 
                 System.out.println("visitors_group_classes = " + Arrays.toString(visitors_group_classes));
-                getInfoClientWhoCame(subscription, fitnesZone);
+                getInfoClientWhoCame(subscription, fitnessZone);
                 return;
-            } else if (fitnesZone.name().equals(FitnesZone.SWIMMING_POOL.name())) {
-                this.visitors_pool = AddClientToArr.addClientToPOOL(subscription, fitnesZone, countPOOL, visitors_pool);
-                getInfoClientWhoCame(subscription, fitnesZone);
+            } else if (fitnessZone.name().equals(SubscriptionType.SWIMMING_POOL.name())) {
+                this.visitors_pool = addClientToPOOL(subscription, fitnessZone,  visitors_pool);
+                getInfoClientWhoCame(subscription, fitnessZone);
                 System.out.println("visitors_pool = " + Arrays.toString(visitors_pool));
                 return;
             }
         } else {
-            System.out.println("Что-то пошло не так. По какой-то причине вы не можете посетить  " + fitnesZone.name() + ". Обратитесь пожалуйста к вашему менеджеру");
+            System.out.println("Что-то пошло не так. По какой-то причине вы не можете посетить  " + fitnessZone.name() + ". Обратитесь пожалуйста к вашему менеджеру");
             return;
         }
 
@@ -97,7 +96,7 @@ public class FitnesCenter {
 
 
     /// очищаем массивы с записанными в GYM, POOL, GROUP_CLASSES после закрытия клуба
-    public void closedFitnes() {
+    public void closedFitness() {
         LocalTime start_time = SubscriptionType.FULL_SUBSCRIPTION.getTime_start();
         LocalTime end_time = SubscriptionType.FULL_SUBSCRIPTION.getEnd_time();
 
@@ -118,26 +117,27 @@ public class FitnesCenter {
     }
 
     public void getInfoALLclients() {
-        for (int i = 0; i < gym_visitors.length; i++) {
-            if (gym_visitors[i] != null)
-                System.out.println(" В тренажерном зале зарегистрированн следующий посетитель " + gym_visitors[i]);
+        for (FitnesSubscription gym_visitor : gym_visitors) {
+            if (gym_visitor != null)
+                System.out.println(" В тренажерном зале зарегистрирован следующий посетитель " + gym_visitor);
         }
 
-        for (int i = 0; i < visitors_pool.length; i++) {
-            if (visitors_pool[i] != null)
-                System.out.println(" В бассейне зарегистрированн следующий посетитель " + visitors_pool[i]);
+        for (FitnesSubscription visitor_pool : visitors_pool) {
+            if (visitor_pool != null)
+                System.out.println(" В бассейне зарегистрирован следующий посетитель " + visitor_pool);
         }
 
-        for (int i = 0; i < visitors_group_classes.length; i++) {
-            if (visitors_group_classes[i] != null)
-                System.out.println("На групповых занятиях зарегистрированн следующий посетитель " + visitors_group_classes[i]);
+        for (FitnesSubscription visitors_group_class : visitors_group_classes) {
+            if (visitors_group_class != null)
+                System.out.println("На групповых занятиях зарегистрирован следующий посетитель " + visitors_group_class);
         }
     }
 
-    public void getInfoClientWhoCame(FitnesSubscription subscription, FitnesZone fitnesZone){
+    public void getInfoClientWhoCame(FitnesSubscription subscription, SubscriptionType fitnesZone){
         LocalTime time = LocalTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        System.out.println("В финес центр пришел " + subscription.getOwner().getName() + " " + subscription.getOwner().getSurname() + ". Посетитель записался в " + fitnesZone.name() + ". Текущее время и дата " + time.format(formatter) + "; " + subscription.getCurrent_date());
+        System.out.println("В фитнес центр пришел " + subscription.getOwner().getName() + " " + subscription.getOwner().getSurname() + ". Посетитель просит записать в " + fitnesZone.name() + ". Текущее время и дата " + time.format(formatter) + "; " + subscription.getCurrent_date());
+
     }
 
 
@@ -146,11 +146,52 @@ public class FitnesCenter {
 потом бассейна, потом групповых занятий.
 
 Реализовать возможность выводить информацию в консоль каждый раз, когда абонемент регистрируется в
-одной из зон ( добавляется в массив). Информация для вывода:
+одной из зон (добавляется в массив). Информация для вывода:
 
 Фамилия Имя Посещаемая зона (бассейн/тренажерный зал/групповые занятия)
 Дата и время посещения
  */
+
+    public FitnesSubscription[] addClientToGYM(FitnesSubscription subscription, SubscriptionType fitnesZone,  FitnesSubscription[] gym_visitors) {
+
+
+        if (countGYM < gym_visitors.length) {
+            gym_visitors[countGYM] = subscription;
+            countGYM++;
+            System.out.println("Вы записаны в " + fitnesZone.name() + ". Хорошей  вам тренировки");
+        } else {
+            System.out.println("В тренажерном зале нет мест. Попробуйте прийти позже");
+        }
+        return gym_visitors;
+    }
+
+
+
+    public  FitnesSubscription[] addClientToPOOL(FitnesSubscription subscription, SubscriptionType fitnesZone, FitnesSubscription[] visitors_pool) {
+
+        if (countPOOL < visitors_pool.length) {
+            visitors_pool[countPOOL] = subscription;
+            countPOOL++;
+            System.out.println("Вы записаны в " + fitnesZone.name() + ". Приятного вам плавания");
+        } else {
+            System.out.println("Бассейн полон. Попробуйте прийти позже");
+        }
+        return visitors_pool;
+    };
+
+
+
+    public FitnesSubscription[] addClientToGroupClasses(FitnesSubscription subscription, SubscriptionType fitnesZone, FitnesSubscription[] visitors_group_classes) {
+
+        if (countGroupClasses < visitors_group_classes.length) {
+            visitors_group_classes[countGroupClasses] = subscription;
+            countGroupClasses++;
+            System.out.println("Вы записаны в " + fitnesZone.name() + " . Хорошей вам тренировки ");
+        } else {
+            System.out.println("В классах с групповыми занятиями закончились свободные места. Попробуйте прийти позже");
+        }
+        return visitors_group_classes;
+    };
 
 
     @Override

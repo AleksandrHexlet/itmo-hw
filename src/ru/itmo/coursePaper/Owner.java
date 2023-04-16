@@ -6,7 +6,11 @@ public class Owner {
     private int year_of_birth;
 
     public Owner(String name, String surname, int year_of_birth) {
-        this.name = name;
+       if(name.length()< 1) throw new IllegalArgumentException("Имя владельца не может быть пустым");
+       if(surname.length()< 1) throw new IllegalArgumentException("Фамилия владельца не может быть пустым");
+       if(year_of_birth < 1923) throw new IllegalArgumentException("Год рождения владельца должен начинаться с 1923 года. Если вам больше 100 лет, тогда обратитесь к менеджеру");
+
+           this.name = name;
         this.surname = surname;
         this.year_of_birth = year_of_birth;
     }

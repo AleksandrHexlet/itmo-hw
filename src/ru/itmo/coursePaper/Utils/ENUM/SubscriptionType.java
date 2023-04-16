@@ -2,11 +2,12 @@ package ru.itmo.coursePaper.Utils.ENUM;
 
 import java.time.LocalTime;
 
+
 public enum SubscriptionType {
     ONE_TIME_SUBSCRIPTION("one_time",LocalTime.of( 8, 00 ),LocalTime.of( 22 , 00 )),
     DAILY_SUBSCRIPTION("daily_subscription", LocalTime.of( 8, 00 ),LocalTime.of( 16 , 00 )),
-    FULL_SUBSCRIPTION("full_subscription", LocalTime.of( 8, 00 ),LocalTime.of( 22 , 00 ));
-
+    FULL_SUBSCRIPTION("full_subscription", LocalTime.of( 8, 00 ),LocalTime.of( 22 , 00 )),
+    GYM, SWIMMING_POOL, GROUP_CLASSES;
     private String name_subscription;
 //    private LocalTime time_start =LocalTime.of( 8 , 00 ) ;
 //    private LocalTime end_time =LocalTime.of( 22 , 00 ) ;
@@ -19,6 +20,9 @@ public enum SubscriptionType {
         this.end_time = end_time;
     }
 
+    SubscriptionType() {
+
+    }
 
 
     public String getName_subscription() {
@@ -32,5 +36,15 @@ public enum SubscriptionType {
     public LocalTime getEnd_time() {
         return end_time;
     }
-}
+//    public enum FitnesZone {
+//        GYM, SWIMMING_POOL, GROUP_CLASSES;
+//
+////    public FitnesZone getGym() {
+////        return FitnesZone.GYM;
+////    }
+
+
+    }
+
+
 

@@ -1,11 +1,9 @@
 package ru.itmo.coursePaper;
 
-import ru.itmo.coursePaper.Utils.ENUM.FitnesZone;
 import ru.itmo.coursePaper.Utils.ENUM.SubscriptionType;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.Arrays;
 import java.util.Objects;
 
 
