@@ -5,6 +5,7 @@ import ru.itmo.lesson14.task.task01.Fruit;
 import java.util.Optional;
 
 public class OptionalMethods {
+
     // Задания на методы Optional:
     // 1. написать метод, который принимает на вход тип фрукта, стоимость и количество
     // и возвращает Optional контейнер с экземпляром типа Fruit
