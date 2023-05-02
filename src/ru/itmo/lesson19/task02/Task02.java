@@ -1,5 +1,7 @@
 package ru.itmo.lesson19.task02;
 
+import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Task02 {
@@ -27,5 +29,15 @@ public class Task02 {
         //      Long - сумма транзакций (sum) по данному аккаунту
         //  2. найти сумму транзакций по всем аккаунтам (возможные решения попробуйте найти самостоятельно)
 
+//      1.
+        Map<String, Long> map01 = transactionStream.collect(Collectors.groupingBy(transaction -> transaction.getAccount()
+                .getNumber(), Collectors.summingLong(transaction -> transaction.getSum())));
+
+        System.out.println("map01 = " + map01);
+
+// 2.
+
+       Long sumTransactionAllAccount = transactionStream.collect(Collectors.summingLong(transaction -> transaction.getSum()));
+        System.out.println("sumTransactionAllAccount = " + sumTransactionAllAccount);
     }
-}
+};
