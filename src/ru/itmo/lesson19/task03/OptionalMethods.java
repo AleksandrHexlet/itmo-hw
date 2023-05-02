@@ -47,13 +47,6 @@ public class OptionalMethods {
     }
 
 
-    // 3. написать метод, который принимает на вход экземпл€р типа Fruit
-    // и возвращает
-    // название фрукта (FruitType.getName()) в Optional контейнере, если тип фрукта определен,
-    // и Optional контейнер с null ссылкой, если тип фрукта == null
-    // ¬место обычных проверок использовать тип Optional и подход€щие методы
-
-
     public Optional optionalContainer03(Fruit fruit) {
 
         Optional<String> optionalContainer= Optional.ofNullable(fruit.getType().getName());
