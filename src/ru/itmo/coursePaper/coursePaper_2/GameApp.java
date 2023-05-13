@@ -8,11 +8,10 @@ import java.util.*;
 
 public class GameApp {
 
-    Map<String, Command> commandMap = new HashMap<>();
     String gameState = "";
     private boolean isStartingGame = false;
     int userAnswer;
-//    Scanner scanner = new Scanner(System.in);
+    //    Scanner scanner = new Scanner(System.in);
     UtilsMethod utilsMethod = new UtilsMethod();
     private String paragraphName = "";
 
@@ -89,17 +88,17 @@ public class GameApp {
 
         while(isStartingGame && first_menu_item !="end_game" && second_menu_item != "end_game"){
 
-         if(first_menu_item != "") {
-             userAnswer = utilsMethod.scanner();
+            if(first_menu_item != "") {
+                userAnswer = utilsMethod.scanner();
 
-             isStartingGame = utilsMethod.isCorrectAnswer(userAnswer, program_partition_name);
+                isStartingGame = utilsMethod.isCorrectAnswer(userAnswer, program_partition_name);
 
-             if (isStartingGame == false) return;
-             if (userAnswer == 3) {
-                 startGame();
-                 return;
-             }
-         }
+                if (isStartingGame == false) return;
+                if (userAnswer == 3) {
+                    startGame();
+                    return;
+                }
+            }
             if(first_menu_item !="" && second_menu_item !=""){
                 paragraphName = userAnswer == 1 ? first_menu_item : second_menu_item;
                 gameState = paragraphName;
@@ -119,20 +118,3 @@ public class GameApp {
 
 
 }
-
-/*
-Пользователю отображается текст параграфа и 2 варианта ответов (названия других параграфов). В зависимости от выбора пользователя, ему отображается текст выбранного параграфа и информация об окончании игры, если параграф это подразумевает.
-
-Меню должно быть реализовано с помощью паттерна Команда, где каждый пункт меню - отдельная команда.
-
-Меню:
-
-Начать игру (начало отрисовки параграфов)
-Загрузить игру
-Выйти
-После начала игры должна быть возможность выйти в меню при этом в меню появляется новый пункт 'Сохранить игру'.
-
-Когда пользователь выбирает пункт 'Сохранить игру', состояние игры необходимо сохранять в файл и восстанавливать при выборе пункта 'Загрузить игру'.
-
-Параграфы-узлы в файле 'узлы-и-переходы.png' Названия, текст параграфов-узлов и варианты ответов в файле 'текст-параграфов.md'
- */
