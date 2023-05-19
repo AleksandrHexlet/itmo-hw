@@ -7,8 +7,11 @@ import java.io.IOException;
 import java.util.*;
 
 public class GameApp {
+    StartGame startGame = new StartGame();
+    GameApp linkGameApp;
+    Paragraph gameState = new Data().getFox();
 
-    String gameState = "";
+
     private boolean isStartingGame = false;
     int userAnswer;
     //    Scanner scanner = new Scanner(System.in);
@@ -16,105 +19,59 @@ public class GameApp {
     private String paragraphName = "";
 
 
-    public void downloadGame() {
-        if (gameState != ""){
-            userChoiseParagraf(gameState);
-        } else{
-            System.out.println("Вы сможите сохранить игру, только после начала игры");
-            isStartingGame = false;
-            startGame();
-        }
+    public void getLink(GameApp gameApp) {
+        linkGameApp = gameApp;
     }
 
-    public void saveGame() {
-        gameState = paragraphName;
-        System.out.println("Вы сохранили игру. Теперь вы можете продолжить игру.");
-        startGame();
+    public void start() {
 
+        OperationExecutor operationExecutor = new OperationExecutor();
+        operationExecutor.executeOperation(startGame);
 
-    }
+        userAnswer = utilsMethod.scanner();
 
-
-    public void startGame() {
-
-        System.out.println("Для выбора введите цифру выбранного пункта меню.");
-        if (isStartingGame) {
-            System.out.println("Меню:\n" +
-
-                    "1. Начать игру\n" +
-                    "2. Загрузить игру\n" +
-                    "3. Выйти\n" +
-                    "4. Сохранить игру");
-        } else {
-            System.out.println("Меню:\n" +
-
-                    "1. Начать игру\n" +
-                    "2. Загрузить игру\n" +
-                    "3. Выйти ");
-
-        }
-        userAnswer =  utilsMethod.scanner();
-        isStartingGame = utilsMethod.isCorrectAnswer(userAnswer,"menu");
-        if (isStartingGame == true) {
-            executeCommand(userAnswer);
-        } else {
-            startGame();
-        }
-    }
-
-    public void executeCommand(int userChoise) {
-        if (userChoise == 1) {
-            userChoiseParagraf("fox");
-        } else {
-            if (userChoise == 2) {
-                downloadGame();
-            } else {
-                if (userChoise == 3) {
-                    System.out.println("Вы вышли из игры.");
-                } else {
-                    saveGame();
-                }
-            }
-        }
-    }
-    public void userChoiseParagraf(String first_drawing) {
-        paragraphName = first_drawing;
-        String paragraphText = "";
-        String first_menu_item = "";
-        String second_menu_item = "";
-        String  program_partition_name = "paragraph";
-
-        Paragraph paragraph = new Paragraph();
-
-        while(isStartingGame && first_menu_item !="end_game" && second_menu_item != "end_game"){
-
-            if(first_menu_item != "") {
-                userAnswer = utilsMethod.scanner();
-
-                isStartingGame = utilsMethod.isCorrectAnswer(userAnswer, program_partition_name);
-
-                if (isStartingGame == false) return;
-                if (userAnswer == 3) {
-                    startGame();
-                    return;
-                }
-            }
-            if(first_menu_item !="" && second_menu_item !=""){
-                paragraphName = userAnswer == 1 ? first_menu_item : second_menu_item;
-                gameState = paragraphName;
+        if (userAnswer == 1) {
+           if(gameState != null) System.out.println("начать игру gameState = " + gameState.getName());
+            isStartingGame = true;
+           utilsMethod.drowParagraph(gameState, linkGameApp);
+        } else if (userAnswer == 2) {
+            if(gameState != null) System.out.println("load игру gameState = " + gameState.getName());
+            isStartingGame = true;
+            utilsMethod.drowParagraph(gameState, linkGameApp);
+        } else if (userAnswer == 3) {
+            if(isStartingGame){
+                System.out.println("Игра сохранена");
+            } else{
+                System.out.println("Вы вышли из игры");
+                return;
             }
 
-            ArrayList<String> paragraphList = paragraph.getParagraph(paragraphName);
+            if(gameState != null) System.out.println("сохранить игру gameState = " + this.gameState.getName());
 
-            paragraphText = paragraphList.get(0);
-            first_menu_item= paragraphList.get(1);
-            second_menu_item = paragraphList.get(2);
-            System.out.println(paragraphText);
-
+            linkGameApp.start();
+        } else if (userAnswer == 4 && isStartingGame == true) {
+            System.out.println("Вы вышли из игры");
+            return;
+        } else if (userAnswer == 4 && isStartingGame == false) {
+            System.out.println("Не верная команда. Начните игру снова");
+            isStartingGame = true;
+            linkGameApp.start();
         }
 
 
     }
+
+
+    //        "1. Начать игру\n" +
+//                "2. Загрузить игру\n" +
+//                "3. Выйти\n" +
+//                "4. Сохранить игру");
+//    } else {
+//        System.out.println("Меню:\n" +
+//
+//                "1. Начать игру\n" +
+//                "2. Загрузить игру\n" +
+//                "3. Выйти ");
 
 
 }
