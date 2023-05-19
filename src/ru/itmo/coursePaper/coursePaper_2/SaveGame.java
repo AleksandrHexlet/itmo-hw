@@ -16,15 +16,12 @@ public  SaveGame (Paragraph paragraph, GameApp gameApp){
     this.paragraph = paragraph;
     this.gameApp= gameApp;
 };
-    OperationExecutor operationExecutor = new OperationExecutor();
-    UtilsMethod utilsMethod = new UtilsMethod();
     @Override
     public void execute() {
         gameApp.gameState = paragraph;
         gameApp.start();
-//        utilsMethod.setGameState(utilsMethod.getParagraphName());
+
         System.out.println("Вы сохранили игру. Теперь вы можете продолжить игру.");
 
-//        operationExecutor.executeOperation(new StartGame());
     }
 }

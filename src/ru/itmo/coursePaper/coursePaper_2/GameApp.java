@@ -14,11 +14,7 @@ public class GameApp {
 
     private boolean isStartingGame = false;
     int userAnswer;
-    //    Scanner scanner = new Scanner(System.in);
     UtilsMethod utilsMethod = new UtilsMethod();
-    private String paragraphName = "";
-
-
     public void getLink(GameApp gameApp) {
         linkGameApp = gameApp;
     }
@@ -60,18 +56,5 @@ public class GameApp {
 
 
     }
-
-
-    //        "1. Начать игру\n" +
-//                "2. Загрузить игру\n" +
-//                "3. Выйти\n" +
-//                "4. Сохранить игру");
-//    } else {
-//        System.out.println("Меню:\n" +
-//
-//                "1. Начать игру\n" +
-//                "2. Загрузить игру\n" +
-//                "3. Выйти ");
-
 
 }

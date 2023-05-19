@@ -38,6 +38,5 @@ public class StartGame implements Command {
 
         }
         isStartingGame = true;
-//          isStartingGame = true;
     }
 }
