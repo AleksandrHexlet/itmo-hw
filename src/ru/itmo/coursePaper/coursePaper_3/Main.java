@@ -15,7 +15,7 @@ public class Main {
         InetSocketAddress local = new InetSocketAddress(ip, 1111);
 
         Socket socket = new Socket();
-        // Socket socket = new Socket(ip, port); // соединение с удаленным сервером
+        // Socket socket = new Socket(ip, port); // СЃРѕРµРґРёРЅРµРЅРёРµ СЃ СѓРґР°Р»РµРЅРЅС‹Рј СЃРµСЂРІРµСЂРѕРј
         // Socket socket = new Socket(remote.getHostString(), remote.getPort());
         OutputStream output = null;
         InputStream input = null;
@@ -23,7 +23,7 @@ public class Main {
             // socket.bind(local);
             System.out.println(socket.isBound());
 
-            socket.connect(remote, 10000); // соединение с удаленным сервером
+            socket.connect(remote, 10000); // СЃРѕРµРґРёРЅРµРЅРёРµ СЃ СѓРґР°Р»РµРЅРЅС‹Рј СЃРµСЂРІРµСЂРѕРј
             System.out.println(socket.isConnected());
 
             System.out.println(socket.getReceiveBufferSize());

@@ -31,29 +31,29 @@ public class ReadWrite implements AutoCloseable{
         }
         return msg;
     }
-//    public Message readTxtFile(Socket socket, String fileName) throws IOException  {
-//        // читаем txt файл с сервера и сохраняем его в папке FilesPackageClient
-//     String pathToFile= "src/ru/itmo/coursePaper/coursePaper_3/FilesPackageClient" + fileName;
-//        try {
-////            сохраняем файл на клиенте
-//            byte[] buffer = new byte[1024];
-//
-//            InputStream inputStream = socket.getInputStream();
-//            int bytesRead;
-//            File file = new File("src/ru/itmo/coursePaper/coursePaper_3/FilesPackageClient" + fileName);
-//            FileOutputStream fileOutputStream = new FileOutputStream(file);
-//            while ((bytesRead = inputStream.read(buffer)) != -1) {
-//                fileOutputStream.write(buffer, 0, bytesRead);
-//            }
-//            fileOutputStream.close();
-//            System.out.println("Файл сохранен на клиенте: " + file.getAbsolutePath());
-//
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return new Message("Файл "+ fileName + " сохранён по адресу " + pathToFile);
-//    }
+    public Message readTxtFile(Socket socket, String fileName) throws IOException  {
+        // читаем txt файл с сервера и сохраняем его в папке FilesPackageClient
+     String pathToFile= "src/ru/itmo/coursePaper/coursePaper_3/FilesPackageClient" + fileName;
+        try {
+//            сохраняем файл на клиенте
+            byte[] buffer = new byte[1024];
+
+            InputStream inputStream = socket.getInputStream();
+            int bytesRead;
+            File file = new File("src/ru/itmo/coursePaper/coursePaper_3/FilesPackageClient" + fileName);
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                fileOutputStream.write(buffer, 0, bytesRead);
+            }
+            fileOutputStream.close();
+            System.out.println("Файл сохранен на клиенте: " + file.getAbsolutePath());
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return new Message("Файл "+ fileName + " сохранён по адресу " + pathToFile);
+    }
 
 
 
@@ -61,19 +61,19 @@ public class ReadWrite implements AutoCloseable{
         message.setSent(LocalDateTime.now());
         //отправляем сообщение на сервер
        output.writeObject(message);
-
+//        System.out.println("ReadWrite str 64.send message to server or to client == "+ message.getText());
         output.flush();
     }
 
-//    public void writeTxtFile( FileInputStream fileInputStream) throws IOException {
-//        byte[] buffer = new byte[1024];
-//        int bytesRead;
-//        while ((bytesRead = fileInputStream.read(buffer)) != -1) {
-//            output.write(buffer, 0, bytesRead);
-//        }
-//        output.flush();
-//
-//    }
+    public void writeTxtFile( FileInputStream fileInputStream) throws IOException {
+        byte[] buffer = new byte[1024];
+        int bytesRead;
+        while ((bytesRead = fileInputStream.read(buffer)) != -1) {
+            output.write(buffer, 0, bytesRead);
+        }
+        output.flush();
+
+    }
 
     @Override
     public void close()  {

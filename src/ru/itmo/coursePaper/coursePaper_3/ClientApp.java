@@ -24,6 +24,7 @@ public class ClientApp {
     private InetSocketAddress remote;
     Socket socket;
     ReadWrite readWrite;
+
     // При создании клиента в конструктор передается экземпляр InetSocketAddress,
     // который хранит IP сервера и порт.
     public ClientApp(InetSocketAddress remote) {
@@ -31,28 +32,28 @@ public class ClientApp {
 
     }
 
-    public void start()  {
+    public void start() {
 
 
         System.out.println(1);
 //        try (GetTxtFileFromServer getTxtFile = new GetTxtFileFromServer(socket);
 //             SendTxtFileToServer sendTxtFile = new SendTxtFileToServer(socket));
-        try
-              {
+        try {
             System.out.println(2);
             socket = new Socket(remote.getHostString(), remote.getPort());
             readWrite = new ReadWrite(socket);
-
-            WriterThread writerThread = new WriterThread(readWrite);
+            System.out.println("client " + 3 + " ; port == " + socket.getPort());
+            WriterThread writerThread = new WriterThread(readWrite);//поток на отправку
             writerThread.start();
-            ReaderThread readerThread = new ReaderThread(readWrite);
 
+            ReaderThread readerThread = new ReaderThread(readWrite); //поток на получение
+            System.out.println("client " + 4);
             readerThread.start();
-//                  try {
-//                      readerThread.join();
-//                  } catch (InterruptedException e) {
-//                      e.printStackTrace();
-//                  }
+//            try {
+//                readerThread.join();
+//            } catch (InterruptedException ex) {
+//                System.out.println(ex.getMessage());
+//            }
 
 
         } catch (UnknownHostException e) {
@@ -66,11 +67,12 @@ public class ClientApp {
 
     public static void main(String[] args) {
         String ip = "127.0.0.1";
-        int port = 2345;
+        int port = 1234;
         InetSocketAddress remote = new InetSocketAddress(ip, port);
 
         ClientApp clientApp = new ClientApp(remote);
         clientApp.start();
+        System.out.println("client " + 7);
     }
 
 }    /*

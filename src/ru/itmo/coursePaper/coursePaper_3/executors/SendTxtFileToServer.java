@@ -1,121 +1,121 @@
-//package ru.itmo.coursePaper.coursePaper_3.executors;
-//
-//import ru.itmo.coursePaper.coursePaper_3.common.Message;
-//import ru.itmo.coursePaper.coursePaper_3.common.ReadWrite;
-//
-//import java.io.*;
-//import java.net.*;
-//import java.util.Scanner;
-//
-//public class SendTxtFileToServer implements AutoCloseable{
-//
-//    String filePath = "src/ru/itmo/coursePaper/coursePaper_3/FilesPackageClient/";
-////    OutputStream outputStream;
-//    Socket socket;
-//    ReadWrite readWrite;
-//    Scanner scanner = new Scanner(System.in);
-//    public SendTxtFileToServer(Socket socket) throws IOException {
-//        System.out.println("SendTxtFileToServer port === " +  socket.getPort());
-////        this.outputStream = outputStream;
-//        this.socket = socket;
-//    }
-//
-//    public void sendFileToServer() {
-//
-//        try {
-//            readWrite = new ReadWrite(socket);
-//            // Получаем имя файла от пользователя
-//            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-//
-//            System.out.print("Введите имя файла. Имя файла должно начинаться с saveFile и пробел: ");
-//            String fileName = null;
-//            try {
-//                fileName = reader.readLine();
-//            } catch (IOException ex) {
-//                System.out.println("Не удалось прочитать имя txt файла");
-//                ex.printStackTrace();
-//            }
-//
-//
-//    // Создаем файл и записываем в него данные из консоли
-//            System.out.print("Введите содержимое файла: ");
-//            File file = new File(filePath, fileName);
-//            try( FileWriter writer = new FileWriter(file)){
-//
-//            String line;
-//            while ((line = reader.readLine()) != null) {
-//                writer.write(line);
-//                writer.write(System.lineSeparator());
-//            }
-//
-//             System.out.println("Файл успешно создан.");
-//            } catch (IOException ex) {
-//                System.err.println("Ошибка создания файла: " + ex.getMessage());
-//                ex.printStackTrace();
-//            } finally {
-//                // Завершаем запрос
-//                // Удаляем файл
-//                file.delete();
-//            }
-//
-//
-//
-//
-//            try {
-//
-//
-//                // отправляем имя файла на сервер
-//                OutputStream outputStream = socket.getOutputStream();
-//
-//                byte[] fileNameBytes = fileName.getBytes();
-//                outputStream.write(fileNameBytes, 0, fileNameBytes.length);
-//
-//                // отправляем файл на сервер
-//
-//                FileInputStream fileInputStream = new FileInputStream(file);
-//                readWrite.writeTxtFile(fileInputStream);
-//                System.out.println("Файл отправлен на сервер: " + file.getAbsolutePath());
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//
-//
-////            // Записываем данные файла в поток
-////            FileInputStream fileInputStream = new FileInputStream(file);
-////            Message message = new Message("/saveFile");
-////            // отправляем команду сохранения файла на сервер
-////            readWrite.writeMessage(message);
-////            // отправляем файл на сервер
-////            readWrite.writeTxtFile(fileInputStream);
-////            fileInputStream.close();
-//
-//            // Получаем ответ от сервера
-//            InputStream inputStream = socket.getInputStream();
-//            BufferedReader responseReader = new BufferedReader(new InputStreamReader(inputStream));
-//            String responseLine;
-//            while ((responseLine = responseReader.readLine()) != null) {
-//                System.out.println("Ответ сервера: " + responseLine);
-//            }
-//            responseReader.close();
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//
-//        }
-//
-//    @Override
-//    public void close()  {
-//        try {
-//            socket.close();
-//        } catch (IOException e) {
-//            System.out.println("Ошибка закрытия ресурсов. " +
-//                    "Например, обрыв соединения произошел по время закрытия");
-//        }
-//    }
-//}
-//
-//
-//
+package ru.itmo.coursePaper.coursePaper_3.executors;
+
+import ru.itmo.coursePaper.coursePaper_3.common.Message;
+import ru.itmo.coursePaper.coursePaper_3.common.ReadWrite;
+
+import java.io.*;
+import java.net.*;
+import java.util.Scanner;
+
+public class SendTxtFileToServer implements AutoCloseable{
+
+    String filePath = "src/ru/itmo/coursePaper/coursePaper_3/FilesPackageClient/";
+//    OutputStream outputStream;
+    Socket socket;
+    ReadWrite readWrite;
+    Scanner scanner = new Scanner(System.in);
+    public SendTxtFileToServer(Socket socket) throws IOException {
+        System.out.println("SendTxtFileToServer port === " +  socket.getPort());
+//        this.outputStream = outputStream;
+        this.socket = socket;
+    }
+
+    public void sendFileToServer() {
+
+        try {
+            readWrite = new ReadWrite(socket);
+            // РџРѕР»СѓС‡Р°РµРј РёРјСЏ С„Р°Р№Р»Р° РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+            System.out.print("Р’РІРµРґРёС‚Рµ РёРјСЏ С„Р°Р№Р»Р°. РРјСЏ С„Р°Р№Р»Р° РґРѕР»Р¶РЅРѕ РЅР°С‡РёРЅР°С‚СЊСЃСЏ СЃ saveFile Рё РїСЂРѕР±РµР»: ");
+            String fileName = null;
+            try {
+                fileName = reader.readLine();
+            } catch (IOException ex) {
+                System.out.println("РќРµ СѓРґР°Р»РѕСЃСЊ РїСЂРѕС‡РёС‚Р°С‚СЊ РёРјСЏ txt С„Р°Р№Р»Р°");
+                ex.printStackTrace();
+            }
+
+
+    // РЎРѕР·РґР°РµРј С„Р°Р№Р» Рё Р·Р°РїРёСЃС‹РІР°РµРј РІ РЅРµРіРѕ РґР°РЅРЅС‹Рµ РёР· РєРѕРЅСЃРѕР»Рё
+            System.out.print("Р’РІРµРґРёС‚Рµ СЃРѕРґРµСЂР¶РёРјРѕРµ С„Р°Р№Р»Р°: ");
+            File file = new File(filePath, fileName);
+            try( FileWriter writer = new FileWriter(file)){
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                writer.write(line);
+                writer.write(System.lineSeparator());
+            }
+
+             System.out.println("Р¤Р°Р№Р» СѓСЃРїРµС€РЅРѕ СЃРѕР·РґР°РЅ.");
+            } catch (IOException ex) {
+                System.err.println("РћС€РёР±РєР° СЃРѕР·РґР°РЅРёСЏ С„Р°Р№Р»Р°: " + ex.getMessage());
+                ex.printStackTrace();
+            } finally {
+                // Р—Р°РІРµСЂС€Р°РµРј Р·Р°РїСЂРѕСЃ
+                // РЈРґР°Р»СЏРµРј С„Р°Р№Р»
+                file.delete();
+            }
+
+
+
+
+            try {
+
+
+                // РѕС‚РїСЂР°РІР»СЏРµРј РёРјСЏ С„Р°Р№Р»Р° РЅР° СЃРµСЂРІРµСЂ
+                OutputStream outputStream = socket.getOutputStream();
+
+                byte[] fileNameBytes = fileName.getBytes();
+                outputStream.write(fileNameBytes, 0, fileNameBytes.length);
+
+                // РѕС‚РїСЂР°РІР»СЏРµРј С„Р°Р№Р» РЅР° СЃРµСЂРІРµСЂ
+
+                FileInputStream fileInputStream = new FileInputStream(file);
+                readWrite.writeTxtFile(fileInputStream);
+                System.out.println("Р¤Р°Р№Р» РѕС‚РїСЂР°РІР»РµРЅ РЅР° СЃРµСЂРІРµСЂ: " + file.getAbsolutePath());
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+//            // Р—Р°РїРёСЃС‹РІР°РµРј РґР°РЅРЅС‹Рµ С„Р°Р№Р»Р° РІ РїРѕС‚РѕРє
+//            FileInputStream fileInputStream = new FileInputStream(file);
+//            Message message = new Message("/saveFile");
+//            // РѕС‚РїСЂР°РІР»СЏРµРј РєРѕРјР°РЅРґСѓ СЃРѕС…СЂР°РЅРµРЅРёСЏ С„Р°Р№Р»Р° РЅР° СЃРµСЂРІРµСЂ
+//            readWrite.writeMessage(message);
+//            // РѕС‚РїСЂР°РІР»СЏРµРј С„Р°Р№Р» РЅР° СЃРµСЂРІРµСЂ
+//            readWrite.writeTxtFile(fileInputStream);
+//            fileInputStream.close();
+
+            // РџРѕР»СѓС‡Р°РµРј РѕС‚РІРµС‚ РѕС‚ СЃРµСЂРІРµСЂР°
+            InputStream inputStream = socket.getInputStream();
+            BufferedReader responseReader = new BufferedReader(new InputStreamReader(inputStream));
+            String responseLine;
+            while ((responseLine = responseReader.readLine()) != null) {
+                System.out.println("РћС‚РІРµС‚ СЃРµСЂРІРµСЂР°: " + responseLine);
+            }
+            responseReader.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        }
+
+    @Override
+    public void close()  {
+        try {
+            socket.close();
+        } catch (IOException e) {
+            System.out.println("РћС€РёР±РєР° Р·Р°РєСЂС‹С‚РёСЏ СЂРµСЃСѓСЂСЃРѕРІ. " +
+                    "РќР°РїСЂРёРјРµСЂ, РѕР±СЂС‹РІ СЃРѕРµРґРёРЅРµРЅРёСЏ РїСЂРѕРёР·РѕС€РµР» РїРѕ РІСЂРµРјСЏ Р·Р°РєСЂС‹С‚РёСЏ");
+        }
+    }
+}
+
+
+

@@ -18,20 +18,21 @@ ReadWrite readWrite;
     public void run() {
         try {
             while (true) {
-                // Чтение сообщения от сервера
+                // Р§С‚РµРЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ РѕС‚ СЃРµСЂРІРµСЂР°
 
                 Message fromServer = readWrite.readMessage();
-                // 2.6. выводит полученный ответ в консоль
-                System.out.println("Answer from server to client:  ===  " + "\n" + fromServer.getText());
+                System.out.println("РІ ReaderThread ; thread name == " + Thread.currentThread().getName());
+                // 2.6. РІС‹РІРѕРґРёС‚ РїРѕР»СѓС‡РµРЅРЅС‹Р№ РѕС‚РІРµС‚ РІ РєРѕРЅСЃРѕР»СЊ
+                System.out.println("Answer from server to client:  ===  " + fromServer.getText());
 
             }
         } catch (IOException e) {
-            System.out.println("ReaderThread : " + e.getMessage());
+            System.out.println("Р§С‚РµРЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ РѕС‚ СЃРµСЂРІРµСЂР° ReaderThread : " + e.getMessage());
         }
     }
     public void start() {
         try {
-            // Создание объекта ReaderThread и запуск потока
+            // РЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р° ReaderThread Рё Р·Р°РїСѓСЃРє РїРѕС‚РѕРєР°
             ReaderThread receiver = new ReaderThread(readWrite);
             Thread thread = new Thread(receiver);
 //            try {
