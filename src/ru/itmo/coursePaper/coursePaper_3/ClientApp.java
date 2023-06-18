@@ -41,19 +41,19 @@ public class ClientApp {
         try {
             System.out.println(2);
             socket = new Socket(remote.getHostString(), remote.getPort());
+            System.out.println("client " + 3 + " ; socket is ready");
             readWrite = new ReadWrite(socket);
-            System.out.println("client " + 3 + " ; port == " + socket.getPort());
-            WriterThread writerThread = new WriterThread(readWrite);//поток на отправку
-            writerThread.start();
+            System.out.println("client " + 4 + " ; port == " + socket.getPort());
 
-            ReaderThread readerThread = new ReaderThread(readWrite); //поток на получение
-            System.out.println("client " + 4);
-            readerThread.start();
-//            try {
-//                readerThread.join();
-//            } catch (InterruptedException ex) {
-//                System.out.println(ex.getMessage());
-//            }
+            WriterThread sender = new WriterThread(readWrite); //Создание объекта WriterThread. Поток отправки на сервер
+            Thread threadWriter = new Thread(sender);
+            threadWriter.start();
+
+
+            ReaderThread receiver = new ReaderThread(readWrite);
+            // Создание объекта ReaderThread. Потока получения сообщений с сервера
+            Thread threadReader = new Thread(receiver);
+            threadReader.start();
 
 
         } catch (UnknownHostException e) {
@@ -67,7 +67,7 @@ public class ClientApp {
 
     public static void main(String[] args) {
         String ip = "127.0.0.1";
-        int port = 1234;
+        int port = 2345;
         InetSocketAddress remote = new InetSocketAddress(ip, port);
 
         ClientApp clientApp = new ClientApp(remote);

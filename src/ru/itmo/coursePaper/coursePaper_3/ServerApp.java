@@ -10,6 +10,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 
 import ru.itmo.coursePaper.coursePaper_3.common.Message;
 import ru.itmo.coursePaper.coursePaper_3.common.ReadWrite;
+import ru.itmo.coursePaper.coursePaper_3.executors.FileData;
 import ru.itmo.coursePaper.coursePaper_3.executors.ThreadForConnection;
 
 public class ServerApp {
@@ -38,9 +39,29 @@ public class ServerApp {
 
                 try {
                     socket = serverSocket.accept();
+                    ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+                    Object input = objectInputStream.readObject();
+
+                    if (input instanceof String) {
+                        String message = (String) input;
+                        System.out.println("Message received: " + message);
+//                        sendToAll(message);
+                    } else if (input instanceof FileData) {
+                        FileData fileData = (FileData) input;
+                        String fileName = fileData.getFileName();
+                        byte[] fileContent = fileData.getFileContent();
+                        FileOutputStream fileOutputStream = new FileOutputStream(fileName);
+                        fileOutputStream.write(fileContent);
+                        fileOutputStream.close();
+                        System.out.println("File saved: " + fileName);
+                    }
+
+
+
+
                     ReadWrite connection = new ReadWrite(socket);
                     connections.add(connection);
-                    ThreadForConnection thread = new ThreadForConnection(connection, connections, this,getTasksMap());
+                    ThreadForConnection thread = new ThreadForConnection(connection, connections, this,getTasksMap(),socket);
                     thread.start();
 
                     System.out.println(2 + " str 34");
@@ -135,7 +156,7 @@ public class ServerApp {
             return new Message(taskName);
         });
 
-        ServerApp serverApp = new ServerApp(1234);
+        ServerApp serverApp = new ServerApp(2345);
 
         serverApp.addTask(help);
         serverApp.addTask(requests);

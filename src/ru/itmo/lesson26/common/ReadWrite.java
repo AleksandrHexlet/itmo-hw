@@ -1,8 +1,8 @@
-package ru.itmo.lessons.lesson25.common;
+package ru.itmo.lesson26.common;
 
-import ru.itmo.lessons.lesson25.common.Message;
-
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.time.LocalDateTime;
 

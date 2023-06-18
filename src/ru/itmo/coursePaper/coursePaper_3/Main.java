@@ -10,6 +10,8 @@ public class Main {
 
         ClientApp clientApp = new ClientApp(remote);
         clientApp.start();
+        ServerApp serverApp = new ServerApp(port);
+        serverApp.run();
 
         /*
         InetSocketAddress local = new InetSocketAddress(ip, 1111);

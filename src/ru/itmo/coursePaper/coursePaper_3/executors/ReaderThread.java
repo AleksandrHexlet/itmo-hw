@@ -20,31 +20,16 @@ ReadWrite readWrite;
             while (true) {
                 // Чтение сообщения от сервера
 
-                Message fromServer = readWrite.readMessage();
+                Message fromServer = (Message)readWrite.readMessage();
                 System.out.println("в ReaderThread ; thread name == " + Thread.currentThread().getName());
                 // 2.6. выводит полученный ответ в консоль
                 System.out.println("Answer from server to client:  ===  " + fromServer.getText());
 
             }
         } catch (IOException e) {
-            System.out.println("Чтение сообщения от сервера ReaderThread : " + e.getMessage());
+            System.out.println("Сервер не отвечает. Программа завершила работу. \n Сообщение об ошибке из ReaderThread : " + e.getMessage());
+        return;
         }
     }
-    public void start() {
-        try {
-            // Создание объекта ReaderThread и запуск потока
-            ReaderThread receiver = new ReaderThread(readWrite);
-            Thread thread = new Thread(receiver);
-//            try {
-//                thread.join();
-//            } catch (InterruptedException e) {
-//                System.out.println(e.getMessage());
-//            }
-            thread.start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 
 }

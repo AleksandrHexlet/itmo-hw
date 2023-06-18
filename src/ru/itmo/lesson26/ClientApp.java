@@ -1,16 +1,18 @@
 package ru.itmo.lesson26;
 
+import ru.itmo.lesson26.common.ReadWrite;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
-public class AppClient {
+public class ClientApp {
     InetSocketAddress remote;
 Scanner scanner =new Scanner(System.in);
 
-    public AppClient(InetSocketAddress remote)  {
+    public ClientApp(InetSocketAddress remote)  {
         this.remote = remote;
     }
 
@@ -23,7 +25,8 @@ Scanner scanner =new Scanner(System.in);
             // И так до тех пор, пока пользователь не введет '/exit'
             if ("/exit".equals(text)) return;
 
-            try(Socket socket = new Socket(remote.getHostString(), remote.getPort()){
+            try(Socket socket = new Socket(remote.getHostString(), remote.getPort());
+                ReadWrite readWrite = new ReadWrite(socket)){
 
 
             } catch (UnknownHostException exception) {
@@ -34,7 +37,7 @@ Scanner scanner =new Scanner(System.in);
         }
 
     }
-
+}
 
 //
 //    private InetSocketAddress remote;
@@ -135,4 +138,4 @@ Scanner scanner =new Scanner(System.in);
 //
 //
 //
-//}
+

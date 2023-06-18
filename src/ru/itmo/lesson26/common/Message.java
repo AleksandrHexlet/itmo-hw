@@ -1,4 +1,4 @@
-package ru.itmo.lessons.lesson25.common;
+package ru.itmo.lesson26.common;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

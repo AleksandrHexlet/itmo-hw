@@ -10,11 +10,13 @@ import java.util.Scanner;
 
 public class GetTxtFileFromServer implements AutoCloseable{
 
-    Socket socket;
+//    Socket socket;
     String text = "getFileList";
     Scanner scanner = new Scanner(System.in);
-    public GetTxtFileFromServer(Socket socket ) {
-        this.socket = socket;
+    ReadWrite readWrite;
+
+    public GetTxtFileFromServer(ReadWrite readWrite ) {
+        this.readWrite = readWrite;
     }
 
     public void getFileFromServer(){
@@ -24,13 +26,13 @@ public class GetTxtFileFromServer implements AutoCloseable{
         while (true) {
 
             // 2.2. устанавливаем соединение с сервером
-            try (ReadWrite readWrite = new ReadWrite(socket)){
+            try {
                 // 2.3. создаём экземпляр сообщения
                 Message message = new Message(text);
                 // 2.4. отправляем сообщение на сервер
                 readWrite.writeMessage(message);
                 // 2.5. получаем ответ
-                Message fromServer = readWrite.readMessage();
+                Message fromServer = (Message)readWrite.readMessage();
                 // 2.6. выводит полученный ответ в консоль
                 System.out.println("Выберите файл который хотите получить: " + fromServer.getText());
                 String nameFile = scanner.nextLine();
@@ -50,7 +52,7 @@ public class GetTxtFileFromServer implements AutoCloseable{
                     // 2.9. получаем ответ
                     // читаем txt файл с сервера и сохраняем его в папке FilesPackageClient
                     // и написали об этом в консоль для клиента
-                    Message filefromServer = readWrite.readTxtFile(socket,messageWithNameFile.getText());
+                    Message filefromServer = readWrite.clientReadTxtFile(messageWithNameFile.getText());
 
                     // 3.0. выводит полученный ответ в консоль
                     System.out.println(filefromServer.getText());
@@ -71,10 +73,7 @@ public class GetTxtFileFromServer implements AutoCloseable{
     @Override
     public void close()  {
         try {
-//            input.close();
-//            output.close();
-//            socket.close();
-//        } catch (IOException e) {
+         readWrite.close();
         } catch (RuntimeException exception) {
             System.out.println("Ошибка закрытия ресурсов. " +
                     "Например, обрыв соединения произошел по время закрытия");
