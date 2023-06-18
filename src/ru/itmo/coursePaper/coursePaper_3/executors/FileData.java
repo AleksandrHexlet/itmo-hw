@@ -9,9 +9,9 @@ public class FileData implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String fileName;
-    private byte[] fileContent;
+    private String fileContent;
 
-    public FileData(String fileName, byte[] fileContent) {
+    public FileData(String fileName, String fileContent) {
         this.fileName = fileName;
         this.fileContent = fileContent;
     }
@@ -20,7 +20,7 @@ public class FileData implements Serializable {
         return fileName;
     }
 
-    public byte[] getFileContent() {
+    public String getFileContent() {
         return fileContent;
     }
 }

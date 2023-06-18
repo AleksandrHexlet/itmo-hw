@@ -29,7 +29,7 @@ public class WriterThread implements Runnable {
             System.out.println("Доступные опции: " + "\n" +
                     "1) Введите имя файла.txt и через пробел его содержимое для создания и отправки файла на сервер" + "\n" +
                     "2) Введите /getfile для получения списка загруженных файлов" + "\n" +
-                    "3) Введите имя файла для получения этого файла" + "\n" +
+                    "3) Введите вместе file- и имя файла для получения этого файла" + "\n" +
                     "4) Введите любую команду для рассылки этой команды всем активным пользователям " + "\n" +
                     "5) Введите /exit для выхода"
             );
@@ -44,8 +44,16 @@ public class WriterThread implements Runnable {
                 throw new RuntimeException(e);
             }
 
-
-            if (userInput.contains(".txt")) {
+            if (userInput.contains("file-")) {
+                Message message = new Message(userInput);
+                //отправляем сообщение на сервер
+                try {
+                    readWrite.writeMessage(message);
+                } catch (IOException e) {
+                    System.out.println("Сервер не отвечает");
+                    System.out.println(e.getMessage());
+                }
+            }  else if (userInput.contains(".txt")) {
                 try {
                     readWrite.clientWriteAndSendTxtFile(userInput);
 //                    readWrite.readMessage();
