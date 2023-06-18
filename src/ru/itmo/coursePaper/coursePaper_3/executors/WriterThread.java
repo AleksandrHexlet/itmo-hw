@@ -1,9 +1,9 @@
-package ru.itmo.coursePaper.coursePaper_3.executors;
+package src.ru.itmo.coursePaper.coursePaper_3.executors;
 
 
-import ru.itmo.coursePaper.coursePaper_3.Task;
-import ru.itmo.coursePaper.coursePaper_3.common.Message;
-import ru.itmo.coursePaper.coursePaper_3.common.ReadWrite;
+
+import src.ru.itmo.coursePaper.coursePaper_3.common.Message;
+import src.ru.itmo.coursePaper.coursePaper_3.common.ReadWrite;
 
 import java.io.*;
 import java.net.*;
@@ -54,12 +54,17 @@ public class WriterThread implements Runnable {
                     System.out.println(e.getMessage());
                 }
             }  else if (userInput.contains(".txt")) {
-                try {
-                    readWrite.clientWriteAndSendTxtFile(userInput);
-//                    readWrite.readMessage();
-                } catch (IOException e) {
-                    System.out.println("Чтение txt не удалось. Повторите попытку");
+                String[] check =  userInput.split(" ");
+                if(userInput.trim().contains(" ") && check[0].length()>0 && check[1].length()>0){
+                    try {
+                        readWrite.clientWriteAndSendTxtFile(userInput);
+                    } catch (IOException e) {
+                        System.out.println("Чтение txt не удалось. Повторите попытку");
+                    }
+                } else {
+                    System.out.println("Файл не был сохранен! Для сохранения введите имя и содержимое файла");
                 }
+
             } else {
                 Message message = new Message(userInput);
                 System.out.println("в WriterThread отправили сообщение  ===  " + message.getText());

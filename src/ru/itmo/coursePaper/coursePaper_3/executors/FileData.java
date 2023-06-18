@@ -1,4 +1,4 @@
-package ru.itmo.coursePaper.coursePaper_3.executors;
+package src.ru.itmo.coursePaper.coursePaper_3.executors;
 
 
 import java.io.Serial;

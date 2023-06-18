@@ -1,6 +1,7 @@
-package ru.itmo.coursePaper.coursePaper_3;
+package src.ru.itmo.coursePaper.coursePaper_3;
 
-import ru.itmo.coursePaper.coursePaper_3.common.Message;
+
+import src.ru.itmo.coursePaper.coursePaper_3.common.Message;
 
 import java.util.function.Function;
 

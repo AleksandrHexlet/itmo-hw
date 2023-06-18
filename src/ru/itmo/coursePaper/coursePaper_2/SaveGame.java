@@ -1,7 +1,5 @@
 package ru.itmo.coursePaper.coursePaper_2;
 
-import ru.itmo.coursePaper.coursePaper_2.utils.UtilsMethod;
-
 public class SaveGame implements Command{
 
     Paragraph paragraph;
@@ -21,7 +19,7 @@ public  SaveGame (Paragraph paragraph, GameApp gameApp){
         gameApp.gameState = paragraph;
         gameApp.start();
 
-        System.out.println("Вы сохранили игру. Теперь вы можете продолжить игру.");
+        System.out.println("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.");
 
     }
 }

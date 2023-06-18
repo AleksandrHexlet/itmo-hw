@@ -1,9 +1,10 @@
-package ru.itmo.coursePaper.coursePaper_3.executors;
+package src.ru.itmo.coursePaper.coursePaper_3.executors;
 
-import ru.itmo.coursePaper.coursePaper_3.ServerApp;
-import ru.itmo.coursePaper.coursePaper_3.Task;
-import ru.itmo.coursePaper.coursePaper_3.common.Message;
-import ru.itmo.coursePaper.coursePaper_3.common.ReadWrite;
+
+
+import src.ru.itmo.coursePaper.coursePaper_3.ServerApp;
+import src.ru.itmo.coursePaper.coursePaper_3.common.Message;
+import src.ru.itmo.coursePaper.coursePaper_3.common.ReadWrite;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -20,7 +21,7 @@ public class ThreadForConnection extends Thread {
     Socket socket;
 
 
-    public ThreadForConnection(ReadWrite connection, CopyOnWriteArraySet connections, ServerApp serverApp,  Socket socket) {
+    public ThreadForConnection(ReadWrite connection, CopyOnWriteArraySet connections, ServerApp serverApp, Socket socket) {
         this.connection = connection;
         this.connections = connections;
         this.serverApp = serverApp;

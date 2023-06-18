@@ -1,6 +1,8 @@
-package ru.itmo.coursePaper.coursePaper_3.common;
+package src.ru.itmo.coursePaper.coursePaper_3.common;
 
-import ru.itmo.coursePaper.coursePaper_3.executors.FileData;
+
+
+import src.ru.itmo.coursePaper.coursePaper_3.executors.FileData;
 
 import java.io.*;
 import java.net.Socket;

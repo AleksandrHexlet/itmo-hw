@@ -1,4 +1,7 @@
-package ru.itmo.coursePaper.coursePaper_3;
+package src.ru.itmo.coursePaper.coursePaper_3;
+
+import src.ru.itmo.coursePaper.coursePaper_3.common.ReadWrite;
+import src.ru.itmo.coursePaper.coursePaper_3.executors.ThreadForConnection;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -9,10 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-import ru.itmo.coursePaper.coursePaper_3.common.Message;
-import ru.itmo.coursePaper.coursePaper_3.common.ReadWrite;
-import ru.itmo.coursePaper.coursePaper_3.executors.FileData;
-import ru.itmo.coursePaper.coursePaper_3.executors.ThreadForConnection;
+
 
 public class ServerApp {
     private int port;

@@ -1,6 +1,6 @@
-package ru.itmo.coursePaper.coursePaper_2;
+package src.ru.itmo.coursePaper.coursePaper_2;
 
-import ru.itmo.coursePaper.coursePaper_2.utils.UtilsMethod;
+
 
 public class StartGame implements Command {
     OperationExecutor operationExecutor = new OperationExecutor();
@@ -18,23 +18,23 @@ public class StartGame implements Command {
     @Override
     public void execute() {
 
-        System.out.println("Для выбора введите цифру выбранного пункта меню.");
+        System.out.println("пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.");
         System.out.println("isStartingGame = " + isStartingGame);
         if (isStartingGame) {
-            System.out.println("Меню:\n" +
+            System.out.println("пїЅпїЅпїЅпїЅ:\n" +
 
-                    "1. Начать игру\n" +
-                    "2. Загрузить игру\n" +
-                    "3. Сохранить игру \n" +
-                    "4. Выйти\n"
+                    "1. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ\n" +
+                    "2. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ\n" +
+                    "3. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ \n" +
+                    "4. пїЅпїЅпїЅпїЅпїЅ\n"
             );
         } else {
 
-            System.out.println("Меню:\n" +
+            System.out.println("пїЅпїЅпїЅпїЅ:\n" +
 
-                    "1. Начать игру\n" +
-                    "2. Загрузить игру\n" +
-                    "3. Выйти ");
+                    "1. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ\n" +
+                    "2. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ\n" +
+                    "3. пїЅпїЅпїЅпїЅпїЅ ");
 
         }
         isStartingGame = true;

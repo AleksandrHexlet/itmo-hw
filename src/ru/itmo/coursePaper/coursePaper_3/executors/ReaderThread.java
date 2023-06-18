@@ -1,7 +1,9 @@
-package ru.itmo.coursePaper.coursePaper_3.executors;
+package src.ru.itmo.coursePaper.coursePaper_3.executors;
 
-import ru.itmo.coursePaper.coursePaper_3.common.Message;
-import ru.itmo.coursePaper.coursePaper_3.common.ReadWrite;
+
+
+import src.ru.itmo.coursePaper.coursePaper_3.common.Message;
+import src.ru.itmo.coursePaper.coursePaper_3.common.ReadWrite;
 
 import java.io.*;
 import java.net.*;

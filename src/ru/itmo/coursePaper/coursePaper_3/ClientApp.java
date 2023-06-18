@@ -1,8 +1,11 @@
-package ru.itmo.coursePaper.coursePaper_3;
+package src.ru.itmo.coursePaper.coursePaper_3;
 
-import ru.itmo.coursePaper.coursePaper_3.common.ReadWrite;
-import ru.itmo.coursePaper.coursePaper_3.executors.*;
 
+
+
+import src.ru.itmo.coursePaper.coursePaper_3.common.ReadWrite;
+import src.ru.itmo.coursePaper.coursePaper_3.executors.ReaderThread;
+import src.ru.itmo.coursePaper.coursePaper_3.executors.WriterThread;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

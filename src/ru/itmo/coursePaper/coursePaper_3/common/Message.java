@@ -1,4 +1,4 @@
-package ru.itmo.coursePaper.coursePaper_3.common;
+package src.ru.itmo.coursePaper.coursePaper_3.common;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
