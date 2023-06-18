@@ -35,26 +35,26 @@ public class ServerApp {
             while (true) {
 
                 Socket socket; // устанавливает соединение с клиентом
-                System.out.println(1);
+
 
                 try {
                     socket = serverSocket.accept();
-                    ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
-                    Object input = objectInputStream.readObject();
-
-                    if (input instanceof String) {
-                        String message = (String) input;
-                        System.out.println("Message received: " + message);
-//                        sendToAll(message);
-                    } else if (input instanceof FileData) {
-                        FileData fileData = (FileData) input;
-                        String fileName = fileData.getFileName();
-                        byte[] fileContent = fileData.getFileContent();
-                        FileOutputStream fileOutputStream = new FileOutputStream(fileName);
-                        fileOutputStream.write(fileContent);
-                        fileOutputStream.close();
-                        System.out.println("File saved: " + fileName);
-                    }
+//                    ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+//                    Object input = objectInputStream.readObject();
+//
+//                    if (input instanceof String) {
+//                        String message = (String) input;
+//                        System.out.println("Message received: " + message);
+////                        sendToAll(message);
+//                    } else if (input instanceof FileData) {
+//                        FileData fileData = (FileData) input;
+//                        String fileName = fileData.getFileName();
+//                        byte[] fileContent = fileData.getFileContent();
+//                        FileOutputStream fileOutputStream = new FileOutputStream(fileName);
+//                        fileOutputStream.write(fileContent);
+//                        fileOutputStream.close();
+//                        System.out.println("File saved: " + fileName);
+//                    }
 
 
 
@@ -64,9 +64,8 @@ public class ServerApp {
                     ThreadForConnection thread = new ThreadForConnection(connection, connections, this,getTasksMap(),socket);
                     thread.start();
 
-                    System.out.println(2 + " str 34");
+
 //                    sendResponse(connection, readMessage(connection));
-                    System.out.println(3+ " str 36");
 
                 } catch (Exception e){
                     System.out.println("Ошибка во время создания объекта");

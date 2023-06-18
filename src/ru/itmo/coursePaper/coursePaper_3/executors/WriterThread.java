@@ -18,7 +18,7 @@ public class WriterThread implements Runnable {
 
     public WriterThread(ReadWrite readWrite) throws IOException {
         this.readWrite = readWrite;
-
+        System.out.println("WriterThread is ready");
     }
 
     @Override
@@ -48,6 +48,7 @@ public class WriterThread implements Runnable {
             if (userInput.contains(".txt")) {
                 try {
                     readWrite.clientWriteAndSendTxtFile(userInput);
+//                    readWrite.readMessage();
                 } catch (IOException e) {
                     System.out.println("Чтение txt не удалось. Повторите попытку");
                 }

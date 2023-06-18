@@ -1,20 +1,13 @@
 package ru.itmo.coursePaper.coursePaper_3;
 
-import ru.itmo.coursePaper.coursePaper_3.common.Message;
 import ru.itmo.coursePaper.coursePaper_3.common.ReadWrite;
 import ru.itmo.coursePaper.coursePaper_3.executors.*;
 
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.net.SocketException;
 import java.net.UnknownHostException;
-import java.util.Scanner;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.TimeUnit;
 
 
 // 2.7. закрывает соединение с сервером
@@ -24,6 +17,7 @@ public class ClientApp {
     private InetSocketAddress remote;
     Socket socket;
     ReadWrite readWrite;
+
 
     // При создании клиента в конструктор передается экземпляр InetSocketAddress,
     // который хранит IP сервера и порт.
@@ -36,19 +30,18 @@ public class ClientApp {
 
 
         System.out.println(1);
-//        try (GetTxtFileFromServer getTxtFile = new GetTxtFileFromServer(socket);
-//             SendTxtFileToServer sendTxtFile = new SendTxtFileToServer(socket));
         try {
             System.out.println(2);
             socket = new Socket(remote.getHostString(), remote.getPort());
             System.out.println("client " + 3 + " ; socket is ready");
-            readWrite = new ReadWrite(socket);
+           readWrite = new ReadWrite(socket);
+
             System.out.println("client " + 4 + " ; port == " + socket.getPort());
 
             WriterThread sender = new WriterThread(readWrite); //Создание объекта WriterThread. Поток отправки на сервер
             Thread threadWriter = new Thread(sender);
             threadWriter.start();
-
+            System.out.println("client " + 5);
 
             ReaderThread receiver = new ReaderThread(readWrite);
             // Создание объекта ReaderThread. Потока получения сообщений с сервера

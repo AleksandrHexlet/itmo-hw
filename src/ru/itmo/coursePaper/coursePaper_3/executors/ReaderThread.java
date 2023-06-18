@@ -20,7 +20,7 @@ ReadWrite readWrite;
             while (true) {
                 // Чтение сообщения от сервера
 
-                Message fromServer = (Message)readWrite.readMessage();
+                Message fromServer = (Message)readWrite.readMessageInClientFromServer();
                 System.out.println("в ReaderThread ; thread name == " + Thread.currentThread().getName());
                 // 2.6. выводит полученный ответ в консоль
                 System.out.println("Answer from server to client:  ===  " + fromServer.getText());

@@ -132,34 +132,30 @@ public class ThreadForConnection extends Thread {
     public void run() {
         Object dataFromClient = null;
         while (true) {
-            System.out.println(0+"начало ");
 
             try {
-                System.out.println(0.5);
-                dataFromClient = connection.readMessage();
-                System.out.println(1 + "продолжение");
-                if (dataFromClient instanceof Message) {
+                connection.readMessageInServerFromClient(connections);
 
-                    Message message = (Message) dataFromClient;
-
-                    if (message == null) {
-                        connections.remove(connection);
-                        return;
-                    }
-                    write(message);
-//            } else if (dataFromClient instanceof FileData) {
-                } else {
-                    System.out.println(3 + " еще раз продолжение");
-                    try {
-                        FileData fileData = (FileData) dataFromClient;
-                        System.out.println(4 + " финиш");
-                        System.out.println(" Run dataFromClient.getFileName() === " + fileData.getFileName());
-                        serverReadTxtFile(fileData);
-                    } catch (Exception e) {
-                        System.out.println("Ye b gjgf");
-                        e.printStackTrace();
-                    }
-                }
+//                if (dataFromClient instanceof Message) {
+//                    Message message = (Message) dataFromClient;
+//                    System.out.println("(Message) dataFromClient ===  " + message.getText());
+//                    if (message == null) {
+//                        connections.remove(connection);
+//                        return;
+//                    }
+//                    write(message);
+////            } else if (dataFromClient instanceof FileData) {
+//                } else {
+//                    System.out.println("run . else  " );
+//                    try {
+//                        FileData fileData = (FileData) dataFromClient;
+//                        System.out.println(" Run dataFromClient.getFileName() === " + fileData.getFileName());
+//                        serverReadTxtFile(fileData);
+//                    } catch (Exception e) {
+//                        System.out.println("Не удалось прочитать файл");
+//                        e.printStackTrace();
+//                    }
+//                }
 
                 dataFromClient = " ";
             } catch (IOException e) {
